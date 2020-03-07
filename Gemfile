@@ -33,14 +33,19 @@ gem "rectify"
 # gem 'rack-cors'
 
 group :development, :test do
-  gem 'rspec-rails', '>= 3.8.2'
-  gem 'shoulda', '~> 3.6.0'
   gem 'pry-rails', '~> 0.3.9'
   gem 'pry-nav', '~> 0.3.0'
   gem 'parallel_tests', '~> 2.29.1'
   gem 'json', '~> 2.2.0'
-  gem 'timecop', '~> 0.9.1'
 end
+
+group :test do
+  gem 'factory_bot_rails'
+  gem 'timecop', '~> 0.9.1'
+  gem 'rspec-rails', '>= 3.8.2'
+  gem 'shoulda', '~> 3.6.0'
+end 
+
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
