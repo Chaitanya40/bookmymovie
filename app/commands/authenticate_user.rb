@@ -6,7 +6,7 @@ class AuthenticateUser < SimpleCommand
 
   def call
     broadcast(:error, errors.all) and return unless user_found?
-    broadcast(:errors, errors.all) and return unless credentials_valid?
+    broadcast(:error, errors.all) and return unless credentials_valid?
     broadcast(:ok, generate_token)
   end
 
@@ -15,14 +15,14 @@ class AuthenticateUser < SimpleCommand
   attr_accessor :email, :password
 
   def user_found?
-    @user = User.find_by_email(email)
-    errors.add('User not found' unless @user
-    @user.exists?
+    @user = Customer.find_by_email(email)
+    errors.add(user_authentication: 'User not found') unless @user
+    @user.present?
   end
   
   def credentials_valid?
     is_valid_password = @user.authenticate(password)
-    errors.add :user_authentication, 'Invalid credentials' unless is_valid_password
+    errors.add(user_authentication: 'Invalid credentials') unless is_valid_password
     is_valid_password
   end
   

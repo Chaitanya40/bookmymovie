@@ -4,7 +4,7 @@ class Errors
   end
   
   def add(error_hash)
-    @errors << error_hash
+    @errors_array << error_hash
   end
   
   def all

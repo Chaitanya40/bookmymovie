@@ -44,6 +44,7 @@ group :test do
   gem 'timecop', '~> 0.9.1'
   gem 'rspec-rails', '>= 3.8.2'
   gem 'shoulda', '~> 3.6.0'
+  gem 'faker'
 end 
 
 
