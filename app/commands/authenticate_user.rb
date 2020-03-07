@@ -5,8 +5,8 @@ class AuthenticateUser < SimpleCommand
   end
 
   def call
-    broadcast(:error, errors) and return unless user_found?
-    broadcast(:errors, errors) and return unless credentials_valid?
+    broadcast(:error, errors.all) and return unless user_found?
+    broadcast(:errors, errors.all) and return unless credentials_valid?
     broadcast(:ok, generate_token)
   end
 

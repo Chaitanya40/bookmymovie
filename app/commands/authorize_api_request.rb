@@ -4,7 +4,9 @@ class AuthorizeApiRequest < Rectify::Command
   end
 
   def call
-    user
+    broadcast(:error, errors.all) and return unless decoded_auth_token
+    broadcast(:error, errors.all) and return unless user
+    broadcast(:ok, @user) 
   end
 
   private
@@ -12,7 +14,7 @@ class AuthorizeApiRequest < Rectify::Command
   attr_reader :headers
 
   def user
-    @user ||= User.find(decoded_auth_token[:user_id]) if decoded_auth_token
+    @user ||= User.find(decoded_auth_token[:user_id])
     @user || errors.add(:token, 'Invalid token') && nil
   end
 
