@@ -32,6 +32,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 group :development, :test do
   gem 'rspec-rails', '>= 3.8.2'
+  gem 'shoulda', '~> 3.6.0'
   gem 'pry-rails', '~> 0.3.9'
   gem 'pry-nav', '~> 0.3.0'
   gem 'parallel_tests', '~> 2.29.1'
