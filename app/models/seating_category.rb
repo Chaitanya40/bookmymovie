@@ -1,0 +1,2 @@
+class SeatingCategory < ApplicationRecord
+end
